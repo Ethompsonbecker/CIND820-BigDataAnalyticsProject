@@ -1,0 +1,153 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+UNIVARIANT ANALYSIS
+
+```{r}
+data <- read.csv(file = "C:/Users/16133/OneDrive/Desktop/CIND820/Data sets/PRSA_Data_Shunyi.csv", sep = ",", header = TRUE, na.strings = c("","NA"))
+
+str(data)
+head(data)
+```
+#INDIVIDUAL ANALYSIS
+```{r}
+
+```
+
+
+##PM2.5
+```{r}
+
+summary(data$PM2.5)
+
+boxplot(data$PM2.5,ylab = "mu g/m^3")
+
+plot(data$PM2.5)
+
+PM2.5 <- data$PM2.5
+
+hist(PM2.5, breaks = sqrt(nrow(data)))
+
+# get mean and Standard deviation
+mean = mean(data$PM2.5)
+std = sd(data$PM2.5)
+
+sd(data$PM2.5)
+```
+##PM10
+```{r}
+
+summary(data$PM10)
+
+boxplot(data$PM10,ylab = "mu g/m^3")
+
+plot(data$PM10)
+
+hist(data$PM10, breaks = sqrt(nrow(data)))
+```
+##SO2
+```{r}
+
+summary(data$SO2)
+
+boxplot(data$SO2,ylab = "mu g/m^3")
+
+plot(data$SO2)
+
+hist(data$SO2, breaks = sqrt(nrow(data)))
+
+```
+
+##NO2
+```{r}
+
+summary(data$NO2)
+
+boxplot(data$NO2,ylab = "mu g/m^3")
+
+plot(data$NO2)
+
+hist(data$NO2, breaks = sqrt(nrow(data)))
+```
+
+##CO
+```{r}
+
+summary(data$CO)
+
+boxplot(data$CO,ylab = "mu g/m^3")
+
+plot(data$CO)
+
+hist(data$CO, breaks = sqrt(nrow(data)))
+```
+
+##O3
+```{r}
+
+summary(data$O3)
+
+boxplot(data$O3,ylab = "mu g/m^3")
+
+plot(data$O3)
+
+hist(data$O3, breaks = sqrt(nrow(data)))
+
+```
+
+##Temperature
+```{r}
+#temperature
+summary(data$TEMP)
+
+plot(data$TEMP)
+
+hist(data$TEMP, breaks = sqrt(nrow(data)))
+```
+
+##Pressure
+```{r}
+#pressure
+summary(data$PRES)
+
+plot(data$PRES)
+
+hist(data$PRES, breaks = sqrt(nrow(data)))
+```
+
+##Dew Point
+```{r}
+summary(data$DEWP)
+
+plot(data$DEWP)
+
+hist(data$DEWP, breaks = sqrt(nrow(data)))
+```
+
+##Rain
+```{r}
+summary(data$RAIN)
+
+plot(data$RAIN)
+
+
+
+```
+
+##Wind Direction
+```{r}
+summary(data$wd)
+
+
+```
+
+##Wind Speed
+```{r}
+summary(data$WSPM)
+
+plot(data$WSPM)
+
+hist(data$WSPM, breaks = sqrt(nrow(data)))
+```
+
