@@ -1,5 +1,5 @@
-Multiple Linear Regression Analysis 
+Multiple Linear Regression Analysis Results
 
 Done in Python  
-Includes results and code  
+ 
 
