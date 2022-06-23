@@ -1,0 +1,148 @@
+---
+title: "Bivariate Analysis"
+output: html_notebook
+---
+
+#Cind820
+
+
+```{r}
+data <- read.csv(file = "C:/Users/16133/OneDrive/Desktop/CIND820/Data sets/PRSA_Data_Shunyi.csv"
+                     , sep = ",", header = TRUE, na.strings = c("","NA"))
+
+```
+
+
+```{r}
+#fill missing values with measure of central tendancy
+#first remove non-numeric columns 
+#remove wind direciton
+#remove column 1 & 18 
+data1 <- data[,2:17]
+datab <- data1[,-15]
+
+#fill missing values with median
+#get medians
+all_col_med <- apply(datab, 2, median, na.rm=TRUE)
+#imputing median to NAs
+for (i in colnames(datab)) {
+  datab[,i][is.na(datab[,i])] <- all_col_med[i]}
+
+#check for missing values
+sum(is.na(datab))
+
+str(datab)
+```
+```{r}
+#load necessary libraries
+library(ggplot2)
+library(ggpubr)
+#install.packages("viridis")
+library("viridis")
+```
+
+
+
+```{r}
+#plot PM2.5 vs PM10
+#matches with strong positive correlation
+plot(datab$PM10,datab$PM2.5, ylab = "PM2.5", xlab = "PM10", col = "gold", main= "PM2.5 vs PM10")
+
+abline(lm(formula = PM2.5 ~ PM10 , data = datab), col = "Blue")
+```
+
+```{r}
+#plot PM2.5 vs So2
+#weaker positive correlation with PM2.5
+plot(datab$SO2,datab$PM2.5, ylab = "PM2.5", xlab = "SO2",col = "gold", main= "PM2.5 vs SO2")
+abline(lm(formula = PM2.5 ~ SO2 , data = datab), col = "Blue")
+
+```
+
+```{r}
+#plot PM2.5 vs NO2
+#3rd strongest correlation with PM2.5
+plot(datab$NO2,datab$PM2.5, ylab = "PM2.5", xlab = "NO2", col = "gold", main= "PM2.5 vs NO2")
+abline(lm(formula = PM2.5 ~ NO2 , data = datab), col = "Blue")
+```
+
+```{r}
+#plot PM2.5 vs CO
+#2nd strongest correlation to PM2.5
+plot(datab$CO,datab$PM2.5, ylab = "PM2.5", xlab = "CO", col = "gold", main= "PM2.5 vs CO")
+abline(lm(formula = PM2.5 ~ CO, data = datab), col = "Blue")
+```
+
+```{r}
+#plot PM2.5 vs O3
+#higher levels of O3 with lower levels of PM2.5
+plot(datab$O3,datab$PM2.5, ylab = "PM2.5", xlab = "O3", col = "gold", main= "PM2.5 vs O3")
+abline(lm(formula = PM2.5 ~ O3, data = datab), col = "Blue")
+```
+
+
+```{r}
+#plot PM2.5 vs temp
+#matches with strong positive correlation
+plot(datab$TEMP,datab$PM2.5, ylab = "PM2.5", xlab = "TEMP", col = "gold", main= "PM2.5 vs Temperature")
+
+
+abline(lm(formula = PM2.5 ~ TEMP, data = datab), col = "Blue")
+```
+
+```{r}
+#plot PM2.5 vs Pressure
+#matches with strong positive correlation
+plot(datab$PRES,datab$PM2.5, ylab = "PM2.5", xlab = "PRES (hPa)", col = "gold", main= "PM2.5 vs Pressure")
+
+
+abline(lm(formula = PM2.5 ~ PRES , data = datab), col = "Blue")
+```
+
+```{r}
+#plot PM2.5 vs DEWP
+#matches with strong positive correlation
+plot(datab$DEWP,datab$PM2.5, ylab = "PM2.5", xlab = "DEWP", col = "gold", main= "PM2.5 vs Dew Point Temperature")
+
+
+abline(lm(formula = PM2.5 ~ DEWP , data = datab), col="Blue")
+```
+
+```{r}
+#plot PM2.5 vs rain
+#matches with strong positive correlation
+plot(datab$RAIN,datab$PM2.5, ylab = "PM2.5", xlab = "RAIN (mm)", col = "gold", main= "PM2.5 vs Rain")
+
+abline(lm(formula = PM2.5 ~ RAIN, data = datab), col="Blue")
+```
+
+```{r}
+#plot PM2.5 vs WSPM
+#matches with strong positive correlation
+plot(datab$WSPM ,datab$PM2.5, ylab = "PM2.5", xlab = "Wind Speed (m/s)", col = "gold", main= "PM2.5 vs Wind Speed")
+
+
+abline(lm(formula = PM2.5 ~ WSPM, data = datab), col="Blue")
+```
+
+```{r}
+#corelation matrix
+library(corrplot)
+#remove year month day hour
+data_c <- datab[,5:15]
+
+corr_data_p <- cor(data_c, method = "pearson")
+corr_data_p
+corrplot(corr_data_p, method = "color", col = viridis(100))
+```
+
+
+```{r}
+
+corr_data_sp <- cor(data_c, method = "spearman")
+
+corr_data_sp
+corrplot(corr_data_sp, method = "color", col = viridis(100))
+```
+
+
