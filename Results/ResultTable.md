@@ -26,3 +26,10 @@ The models with a 1 include the weathered data where the models with a 2 exclude
 |RFR-B-2|52.22196545|0.035859182|0.054932364|
 
 
+The Ranking of the Models was calculated by assigning each evaluation measure a rank and totaling the ranks of each model. The output is displayed below
+
+|Rank|  1| 2| 3| 4| 5| 6| 7| 8| 9|10|11|12|
+|---|-|--|--|--|--|--|--|--|--|--|--|--|
+|Model| RFR-A-1|RFR-A-2|RR-A-1|MLR-A-1|MLR-A-2|RR-A_2|MLR-B-1|RR-B-1|RFR-B-1|RR-B-2|RFR-B-2|MLR-B-2|
+
+As predicted the models that included the variable PM10 had much better fits than those without it. 
