@@ -33,3 +33,17 @@ The Ranking of the Models was calculated by assigning each evaluation measure a 
 |Model| RFR-A-1|RFR-A-2|RR-A-1|MLR-A-1|MLR-A-2|RR-A_2|MLR-B-1|RR-B-1|RFR-B-1|RR-B-2|RFR-B-2|MLR-B-2|
 
 As predicted the models that included the variable PM10 had much better fits than those without it. 
+
+|Feature	|RFR-A-1|	RR-A-1	|MLR-A-1|	RFR-A-2|	RR-A-2	|MLR-A-2|	Result|
+|--------|-----|----------|--------|---------|---------|-------|--------|
+|PM10	|1	|1|	1|	X|	X|	X|	 |
+|SO2|	6|	6	|6|	7|	4|	4|	|
+|NO2|	5|	8|	8|	3|	2|	2|	|
+|CO|	2|	2|	2|	1|	1|	1|	|
+|O3|	8|	5|	5|	5|	6|	6|	|
+|TEMP|	4|	4(-)|	4(-)|	6|	5(-)|	5 (-)| |	
+|PRES|	7|	7	|7	|4	|8	|8	|   |
+|DEWP|	3|	3|	3|	2|	3|	3|	| 
+|WSPM|	9|	9(-)|	9(-)|	8|	7|	7|   |	
+
+The negatives indicate a negative coefficient. 
